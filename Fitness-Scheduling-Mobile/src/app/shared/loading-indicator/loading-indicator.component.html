@@ -1,0 +1,5 @@
+<GridLayout columns="*,auto,*" rows="*,auto,*"
+[style.visibility]="isBusy ? 'visible': 'collapsed'">
+  <ActivityIndicator [busy]="isBusy" col="1" row="1" color="red" width="100" height="100"
+    (busyChange)="onBusyChanged($event)"></ActivityIndicator>
+</GridLayout>

@@ -1,0 +1,24 @@
+<ActionBar>
+  <Label text="Schedule"></Label>
+
+  <ActionItem (tap)="onChange()" ios.systemIcon="9" ios.position="left" android.systemIcon="ic_menu_my_calendar"
+    android.position="actionBar">
+  </ActionItem>
+</ActionBar>
+<FlexboxLayout flexDirection="column" tkExampleTitle tkToggleNavButton>
+
+  <RadCalendar [eventSource]="eventSource" eventsViewMode="Inline" selectionMode="Single" viewMode="{{viewMode}}"
+    (dateSelected)="onDateSelected($event)" row="0" [dayViewStyle]="dayViewStyle">
+  </RadCalendar>
+  <!--
+    [weekViewStyle]="weekViewStyle"
+    [yearViewStyle]="yearViewStyle"
+    [monthViewStyle]="monthViewStyle"
+    [monthNamesViewStyle]="monthNamesViewStyle"
+    -->
+
+</FlexboxLayout>
+<GridLayout columns="*,auto" rows="*, auto" [style.visibility]="isAccountTypeUser ? 'visible' : 'collapsed'">
+  <Button text="+" row="1" col="1" height="60" width="60" borderRadius="45" color="white" fontSize="28"
+    backgroundColor="blue" ripple rippleColor="#fff" (onTap)="openAddDateModal()"></Button>
+</GridLayout>

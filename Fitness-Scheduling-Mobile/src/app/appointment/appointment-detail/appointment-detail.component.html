@@ -1,0 +1,39 @@
+<ScrollView>
+
+  <FlexboxLayout flexDirection="column">
+
+    <Label class="h2" text="Appointment"></Label>
+    <StackLayout class="hr"></StackLayout>
+    <StackLayout orientation="vertical" padding="25" paddingTop="0">
+      <Label [text]="'Company Name: ' + appointment.place.name" textWrap="true"></Label>
+      <Label [text]="'Start Date: ' + (appointment.startDate | date:'dd MMMM HH:mm')" textWrap="true"></Label>
+      <Label [text]="'End Date: ' + (appointment.endDate | date:'dd MMMM HH:mm')" textWrap="true"></Label>
+      <StackLayout class="hr"></StackLayout>
+      <Label text="Note:"></Label>
+      <Label
+        [text]="appointment.noteToOwner || 'Empty Note'"
+        textWrap="true"></Label>
+      <StackLayout class="hr"></StackLayout>
+      <Label class="fas"
+        [text]="appointment.isApproved ? '&#xf058; Appointment confirmed.':'&#xf057; Appointment is waiting to be confirmed.'"
+        [style.color]="appointment.isApproved ? 'green':'red'" textWrap="true"></Label>
+
+      <Label class="fas"
+        [text]="isEndTimeGreaterThanToday(appointment.endDate) ? '&#xf017; Has not expired.' : '&#xf017; Expired.'"
+        [color]="iconColorChanger(appointment.endDate)" textWrap="true"></Label>
+
+      <StackLayout class="hr"></StackLayout>
+      <Button class="-primary" text="Close" (onTap)="closeModal()"></Button>
+    </StackLayout>
+  </FlexboxLayout>
+
+</ScrollView>
+<!--
+ startDate: Date;
+    endDate: Date;
+    applicationDate:Date;
+    isApproved: boolean;
+    isActive:boolean;
+    place: Place;
+    user: User;
+-->

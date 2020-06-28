@@ -1,0 +1,157 @@
+<ActionBar>
+    <Label text="Settings"></Label>
+</ActionBar>
+<StackLayout *ngIf="isUser">
+    <FlexboxLayout flexDirection="row" borderBottomWidth="1px" marginBottom="25px"
+        style="text-align: center;align-items: center;" justifyContent="space-around">
+
+        <GridLayout columns="*, *, *" rows="auto, auto" padding="25px">
+
+            <Image row="0" col="0" src="font://&#xf2f5;" class="fas" color="red" width="48" (onTap)="logOut()"></Image>
+            <Label row="1" col="0" text="Log Out" textWrap="true" fontSize="14px" marginLeft="10px"
+                (onTap)="logOut()"></Label>
+
+            <Image row="0" col="1" src="font://&#xf013;" class="fas" width="48" (tap)="modalChangePassword()"></Image>
+            <Label row="1" col="1" text="Change my password" textWrap="true" fontSize="14px" (tap)="modalChangePassword()"
+                marginLeft="10px"></Label>
+
+            <Image row="0" col="2" src="font://&#xf4ff;" class="fas" width="48" (onTap)="activateForm()"></Image>
+            <Label row="1" col="2" text="{{isFormsReadOnly ? 'Edit Mode (Closed)' : 'Edit Mode (Opened)'}}"
+                textWrap="true" (onTap)="activateForm()" fontSize="14px" marginLeft="10px"
+                [color]="isFormsReadOnly ? 'red': 'green'"></Label>
+
+        </GridLayout>
+    </FlexboxLayout>
+
+    <ScrollView>
+
+        <StackLayout>
+
+            <RadDataForm #userDataForm tkExampleTitle tkToggleNavButton validationMode="Immediate"
+                [isReadOnly]="isFormsReadOnly" [source]="user" commitMode="Manual">
+
+                <TKEntityProperty tkDataFormProperty name="name" displayName="Name" index="0">
+                    <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="This area cannot be empty.">
+                    </TKNonEmptyValidator>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkDataFormProperty name="lastName" displayName="Last Name" index="1">
+                    <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="This area cannot be empty.">
+                    </TKNonEmptyValidator>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkDataFormProperty name="email" displayName="E-Mail" index="2">
+                    <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="This area cannot be empty.">
+                    </TKNonEmptyValidator>
+                    <TKEmailValidator tkEntityPropertyValidators errorMessage="Invalid Email."></TKEmailValidator>
+                    <TKPropertyEditor tkEntityPropertyEditor type="Email"></TKPropertyEditor>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkDataFormProperty name="gender" displayName="Gender" index="3"
+                    valuesProvider="Male, Female, Other">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+                    <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="This area cannot be empty.">
+                    </TKNonEmptyValidator>
+                </TKEntityProperty>
+
+            </RadDataForm>
+
+            <Button text="Apply the Changes" class="-primary" style="margin-top:10; margin-bottom: 100px;"
+                (tap)="commitUserForm()" horizontalAlignment="stretch" isEnabled="{{!isFormsReadOnly}}"></Button>
+        </StackLayout>
+    </ScrollView>
+</StackLayout>
+
+<ScrollView *ngIf="!isUser">
+    <StackLayout>
+
+        <FlexboxLayout flexDirection="column" borderBottomWidth="1px" marginBottom="25px"
+            style="text-align: center;align-items: center;" justifyContent="space-around">
+
+            <GridLayout columns="*, *, *" rows="auto, auto" padding="25px">
+
+                <Image row="0" col="0" src="font://&#xf2f5;" class="fas" color="red" width="48" (onTap)="logOut()">
+                </Image>
+                <Label row="1" col="0" text="Log Out" textWrap="true" fontSize="14px" marginLeft="10px"
+                    (onTap)="logOut()"></Label>
+
+                <Image row="0" col="1" src="font://&#xf013;" class="fas" width="48" (tap)="modalChangePassword()">
+                </Image>
+                <Label row="1" col="1" text="Change my password" textWrap="true" fontSize="14px"
+                    (tap)="modalChangePassword()" marginLeft="10px"></Label>
+
+                <Image row="0" col="2" src="font://&#xf4ff;" class="fas" width="48" (onTap)="activateForm()"></Image>
+                <Label row="1" col="2" text="{{isFormsReadOnly ? 'Edit Mode (Closed)' : 'Edit Mode (Opened)'}}"
+                    textWrap="true" (onTap)="activateForm()" fontSize="14px" marginLeft="10px"
+
+                    [color]="isFormsReadOnly ? 'red': 'green'"></Label>
+
+            </GridLayout>
+
+            <StackLayout class="hr" color="black" marginBottom="0px"></StackLayout>
+
+            <StackLayout orientation="horizontal">
+                <Label text="Invitation Code: " fontSize="14"></Label>
+                <Label [text]="_place.verificationCode" fontSize="14" style="color:navy;"></Label>
+            </StackLayout>
+
+        </FlexboxLayout>
+
+        <StackLayout>
+            <RadDataForm #placeDataForm tkExampleTitle tkToggleNavButton [source]="place" commitMode="Manual"
+                validationMode="Immediate" [isReadOnly]="isFormsReadOnly">
+                <TKEntityProperty tkDataFormProperty name="name" displayName="Workplace Name" index="0">
+                    <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="This area cannot be empty.">
+                    </TKNonEmptyValidator>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkDataFormProperty name="address" displayName="Address" index="1">
+                    <TKPropertyEditor tkEntityPropertyEditor type="MultilineText"></TKPropertyEditor>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkDataFormProperty name="openingTime" displayName="Opening Time" index="2">
+                    <TKPropertyEditor tkEntityPropertyEditor type="TimePicker"></TKPropertyEditor>
+                    <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="This area cannot be empty.">
+                    </TKNonEmptyValidator>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkDataFormProperty name="closingTime" displayName="Closing Time" index="3">
+                    <TKPropertyEditor tkEntityPropertyEditor type="TimePicker"></TKPropertyEditor>
+                    <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="This area cannot be empty.">
+                    </TKNonEmptyValidator>
+                </TKEntityProperty>
+
+                <!-- <TKEntityProperty tkDataFormProperty name="isFullOpen" displayName="Salon 24 Saat Açık: " index="4">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
+                </TKEntityProperty> -->
+
+                <TKEntityProperty tkDataFormProperty name="ownerName" displayName="Owner Name" index="6">
+                </TKEntityProperty>
+
+                <TKEntityProperty tkDataFormProperty name="ownerLastName" displayName="Owner Last Name"
+                    index="7">
+                </TKEntityProperty>
+
+                <TKEntityProperty tkDataFormProperty name="email" displayName="E-Mail" index="8">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Email"></TKPropertyEditor>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkDataFormProperty name="description" displayName="Other Informations"
+                    index="9">
+                    <TKPropertyEditor tkEntityPropertyEditor type="MultilineText"></TKPropertyEditor>
+                </TKEntityProperty>
+
+                <!-- <TKEntityProperty tkDataFormProperty name="offDays" displayName="Kapalı Günler: " index="5"
+                    autoCompleteDisplayMode="Tokens" [valuesProvider]="weekOfDays">
+                    <TKPropertyEditor tkEntityPropertyEditor type="AutoCompleteInline"></TKPropertyEditor>
+                    <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="This area cannot be empty.">
+                    </TKNonEmptyValidator>
+                </TKEntityProperty> -->
+
+            </RadDataForm>
+            <Button text="Değişiklikleri Kaydet" class="-primary" style="margin-top:10" (tap)="commitPlaceForm()"
+                horizontalAlignment="stretch" isEnabled="{{!isFormsReadOnly}}" marginBottom="50px"></Button>
+        </StackLayout>
+
+    </StackLayout>
+</ScrollView>

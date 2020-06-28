@@ -1,0 +1,12 @@
+<GridLayout columns="*" rows="*,auto,*">
+  <StackLayout col="0" row="1" class="form">
+    <Label text="Enter the invitation code in the box below." marginBottom="25" fontSize="14" style="text-align: center;" textWrap="true"></Label>
+    <StackLayout class="form-field" marginBottom="25">
+      <TextField #codeInput [(ngModel)]="code"  class="input" autocapitalizationType="allCharacters" fontSize="32"></TextField>
+    </StackLayout>
+    <Button class="-primary" text="Ok" (onTap)="submit(codeInput)"></Button>
+
+    <Label text="Go back to Login Screen" textWrap="true" (onTap)="goBack()" fontSize="14" style="font-weight: 700; text-align:center" marginTop="25" ></Label>
+  </StackLayout>
+</GridLayout>
+<ns-loading-indicator [isBusy]="isBusy"></ns-loading-indicator>

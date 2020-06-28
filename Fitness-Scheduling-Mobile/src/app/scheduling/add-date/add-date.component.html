@@ -1,0 +1,102 @@
+<ScrollView>
+  <StackLayout orientation="vertical" padding="35 20">
+    <Label text="&#xf00d;" class="fas" (onTap)="closeForm()" fontSize="18" style="margin: 15 0;"></Label>
+
+    <RadDataForm #appointmentForm tkExampleTitle tkToggleNavButton [source]="model">
+      <TKEntityProperty tkDataFormProperty name="date" displayName="Appointment Day" index="0">
+        <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+      </TKEntityProperty>
+
+      <TKEntityProperty tkDataFormProperty name="startTime" displayName="Appointment Start Time" index="1">
+        <TKPropertyEditor tkEntityPropertyEditor type="TimePicker"></TKPropertyEditor>
+      </TKEntityProperty>
+
+      <TKEntityProperty tkDataFormProperty name="endTime" displayName="Appointment End Time" index="2">
+        <TKPropertyEditor tkEntityPropertyEditor type="TimePicker"></TKPropertyEditor>
+      </TKEntityProperty>
+
+      <TKEntityProperty tkDataFormProperty name="noteToOwner" displayName="Note: " index="3">
+        <TKPropertyEditor tkEntityPropertyEditor type="MultilineText"></TKPropertyEditor>
+      </TKEntityProperty>
+
+    </RadDataForm>
+    <Button class="-primary" text="Make a Request" (onTap)="submit()"></Button>
+  </StackLayout>
+</ScrollView>
+
+<!--
+<StackLayout orientation="vertical" padding="50 20">
+  <StackLayout>
+    <Label text="&#xf00d;" class="fas" (onTap)="closeForm()" fontSize="18" style="margin: 15 0;"></Label>
+    <Label
+      text="Bugün: {{formatter.format(today)}}, Saat: {{today.getHours()}}:{{today.getMinutes()}}"
+      class="h4"
+      textAlign="center"
+      class="m-b-10"
+    ></Label>
+    <Label text="Randevu Tarihiniz: " class="h2" textAlign="center"></Label>
+  </StackLayout>
+  <GridLayout class="reserveDateWrapper" orientation="vertical" columns="*,*,*,*" rows="auto,auto">
+    <Label class="monthLabel" text="Ay" col="0" row="0"></Label>
+    <Label class="dayLabel" text="Gün" col="1" row="0"></Label>
+    <Label class="startHoursLabel" text="Başlangıç Saati" col="2" row="0" textWrap="true"></Label>
+    <Label class="endHoursLabel" text="Bitiş Saati" col="3" row="0" > </Label>
+
+    <ListPicker
+    class="picker monthPicker"
+    [items]="months"
+    [selectedIndex]="selectedMonth"
+    (selectedIndexChange)="onSelectedMonthIndexChanged($event)"
+    row="1"
+    col="0"
+  ></ListPicker>
+
+    <ListPicker
+      class="picker dayPicker"
+      [items]="days"
+      [selectedIndex]="selectedDay"
+      (selectedIndexChange)="onSelectedDayIndexChanged($event)"
+      row="1"
+      col="1"
+    ></ListPicker>
+
+    <ListPicker
+      class="picker startHoursPicker"
+      [items]="startHours"
+      [selectedIndex]="selectedStartHourIndex"
+      (selectedIndexChange)="onSelectedStartHourIndexChanged($event)"
+      row="1"
+      col="2"
+    ></ListPicker>
+    <ListPicker
+      class="picker endHoursPicker"
+      [items]="endHours"
+      [selectedIndex]="selectedEndHourIndex"
+      (selectedIndexChange)="onSelectedEndHourIndexChanged($event)"
+      row="1"
+      col="3"
+    ></ListPicker>
+  </GridLayout>
+
+  <Label
+    text="{{selectedWeekDayName}} günü, {{selectedStartHour}}-{{selectedEndHour}} arası randevu almak istiyorum"
+    textWrap="true"
+  ></Label>
+  <Label class="errorMessage" [text]="errorMessage" color="red" fontSize="14" textWrap="true" marginTop="20"></Label>
+
+  <StackLayout class="hr"></StackLayout>
+
+  <StackLayout class="form">
+
+    <Label text="Personal Note: "></Label>
+    <StackLayout class="input-field">
+      <TextField [(ngModel)]="noteToOwner" hint="Enter a note" autocapitalizationType="sentences" maxLength="180" minLength="0" returnKeyType="done"></TextField>
+    </StackLayout>
+  </StackLayout>
+
+
+  <Button class="-primary" text="Reserve Et" [isEnabled]="buttonStatus()" (onTap)="submitAppointment()"></Button>
+</StackLayout>
+
+
+-->

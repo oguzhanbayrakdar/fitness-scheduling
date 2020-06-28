@@ -1,0 +1,50 @@
+<ActionBar>
+  <Label text="Appointments"></Label>
+</ActionBar>
+<GridLayout *ngIf="!appointments" columns="*" rows="*, auto, auto *">
+  <ns-loading-indicator [isBusy]="!appointments && !isLoadingError" col="0" row="1"></ns-loading-indicator>
+  <Label [text]="loadingText" col="0" row="2" fontSize="16" style="text-align: center" textWrap="true"></Label>
+</GridLayout>
+
+<RadListView *ngIf="isAccountTypeUser" [items]="appointments" pullToRefresh="true"
+  (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
+  <ng-template tkListItemTemplate let-item="item">
+
+    <!--User-->
+    <GridLayout columns="auto, *, auto, auto" rows="auto,auto,auto" paddingRight="10" paddingLeft="10"
+      (onTap)="detailOfAppointment(item)" borderBottomWidth="2" borderColor="gray">
+
+      <Label col="0" row="0" class="nameLabel" [text]="item.startDate | date: 'dd MMMM yyyy'" fontSize="16"></Label>
+
+      <Label col="0" row="1" class="descriptionLabel" fontSize="14"
+        [text]="(item.startDate | date: 'HH:mm') + ' - ' +(item.endDate | date: 'HH:mm')"></Label>
+
+      <Label text="&#xf017;" [color]="iconColorChanger(item.endDate)" col="2" row="0" rowSpan="3" class="fas"
+        fontSize="16"></Label>
+
+      <Label [text]="item.isApproved ? '&#xf058;' : '&#xf057;'" col="3" row="0" rowSpan="3"
+        [color]="item.isApproved ? 'green':'red'" class="fas" fontSize="16"></Label>
+    </GridLayout>
+
+  </ng-template>
+</RadListView>
+<RadListView *ngIf="!isAccountTypeUser" [items]="appointments" pullToRefresh="true"
+(pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
+  <ng-template tkListItemTemplate let-item="item">
+    <GridLayout columns="auto, *, auto, auto" rows="auto,auto,auto" paddingRight="10" paddingLeft="10"
+      (onTap)="detailOfAppointmentForPlace(item)" borderBottomWidth="2" borderColor="gray">
+
+      <Label col="0" row="0" class="nameLabel" [text]="item.fullName" fontSize="16"></Label>
+
+      <Label col="0" row="1" class="descriptionLabel" fontSize="14"
+        [text]="item.startDate | date: 'dd MMMM yyyy' + ' | ' + (item.startDate | date: 'HH:mm') + ' - ' +(item.endDate | date: 'HH:mm')"></Label>
+
+      <Label text="&#xf017;" [color]="iconColorChanger(item.endDate)" col="2" row="0" rowSpan="3" class="fas"
+        fontSize="16"></Label>
+
+      <Label [text]="item.isApproved ? '&#xf058;' : '&#xf057;'" col="3" row="0" rowSpan="3"
+        [color]="item.isApproved ? 'green':'red'" class="fas" fontSize="16"></Label>
+    </GridLayout>
+
+  </ng-template>
+</RadListView>

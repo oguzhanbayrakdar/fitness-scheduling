@@ -1,0 +1,14 @@
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\bin\Debug\netcoreapp2.2\FitnessScheduling.deps.json
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\bin\Debug\netcoreapp2.2\FitnessScheduling.runtimeconfig.json
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\bin\Debug\netcoreapp2.2\FitnessScheduling.runtimeconfig.dev.json
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\bin\Debug\netcoreapp2.2\FitnessScheduling.dll
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\obj\Debug\netcoreapp2.2\FitnessScheduling.csprojAssemblyReference.cache
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\obj\Debug\netcoreapp2.2\FitnessScheduling.csproj.CoreCompileInputs.cache
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\obj\Debug\netcoreapp2.2\FitnessScheduling.RazorAssemblyInfo.cache
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\obj\Debug\netcoreapp2.2\FitnessScheduling.RazorAssemblyInfo.cs
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\obj\Debug\netcoreapp2.2\FitnessScheduling.AssemblyInfoInputs.cache
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\obj\Debug\netcoreapp2.2\FitnessScheduling.AssemblyInfo.cs
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\obj\Debug\netcoreapp2.2\FitnessScheduling.RazorTargetAssemblyInfo.cache
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\bin\Debug\netcoreapp2.2\FitnessScheduling.pdb
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\obj\Debug\netcoreapp2.2\FitnessScheduling.dll
+C:\Users\kkrog\source\repos\FitnessScheduling\FitnessScheduling\obj\Debug\netcoreapp2.2\FitnessScheduling.pdb
